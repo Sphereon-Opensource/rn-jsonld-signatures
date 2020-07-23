@@ -33,10 +33,11 @@
   "dependencies": {
     "base64url": "^3.0.1",
     "crypto-ld": "^3.7.0",
+    "hash.js": "^1.1.7",
     "jsonld": "^2.0.2",
     "node-forge": "^0.9.1",
-    "security-context": "^4.0.0",
-    "serialize-error": "^5.0.0"
+    "react-native-security-context": "file:../react-native-security-context/react-native-security-context-0.0.1.tgz",
+    "sodium-javascript": "^0.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
@@ -104,5 +105,17 @@
   "browser": {
     "crypto": false,
     "base64url": false
-  }
+  },
+  "resolutions": {
+    "sodium-native": "file:deps/sodium-javascript-0.6.1.tgz"
+  },
+  "bundledDependencies": [
+    "base64url",
+    "crypto-ld",
+    "hash.js",
+    "jsonld",
+    "node-forge",
+    "react-native-security-context",
+    "sodium-javascript"
+  ]
 }
