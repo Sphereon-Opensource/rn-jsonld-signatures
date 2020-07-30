@@ -105,7 +105,7 @@
     "base64url": false
   },
   "resolutions": {
-    "sodium-native": "https://github.com/sodium-friends/sodium-javascript"
+    "sodium-native": "./node_modules/sodium-javascript"
   },
   "bundledDependencies": [
     "crypto-ld",
