@@ -227,7 +227,7 @@ Digital Bazaar: support@digitalbazaar.com
 Source
 ------
 
-The source code for the Node implementation of the JSON-LD Signatures API
+The source code for the Node and Browser implementation of the JSON-LD Signatures API
 is available at:
 
 https://github.com/digitalbazaar/jsonld-signatures
