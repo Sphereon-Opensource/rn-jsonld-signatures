@@ -1,7 +1,5 @@
-jsonld-signatures
+react-native-jsonld-signatures
 =================
-
-[![Build Status](https://travis-ci.org/digitalbazaar/jsonld-signatures.png?branch=master)](https://travis-ci.org/digitalbazaar/jsonld-signatures)
 
 An implementation of the Linked Data Signatures specification for JSON-LD.
 This software works in all modern browsers as well as node.js via [npm](https://www.npmjs.com/package/jsonld-signatures).
