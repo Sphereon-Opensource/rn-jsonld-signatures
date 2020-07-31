@@ -1,8 +1,8 @@
 {
-  "name": "jsonld-signatures",
+  "name": "react-native-jsonld-signatures",
   "version": "5.1.1-0",
   "description": "An implementation of the Linked Data Signatures specifications for JSON-LD in JavaScript.",
-  "homepage": "https://github.com/digitalbazaar/jsonld-signatures",
+  "homepage": "https://github.com/Sphereon-Opensource/react-native-jsonld-signatures",
   "author": {
     "name": "Digital Bazaar, Inc.",
     "email": "support@digitalbazaar.com",
@@ -15,10 +15,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/digitalbazaar/jsonld-signatures"
+    "url": "https://github.com/Sphereon-Opensource/react-native-jsonld-signatures"
   },
   "bugs": {
-    "url": "https://github.com/digitalbazaar/jsonld-signatures/issues",
+    "url": "https://github.com/Sphereon-Opensource/react-native-jsonld-signatures/issues",
     "email": "support@digitalbazaar.com"
   },
   "license": "BSD-3-Clause",
@@ -30,13 +30,15 @@
     "lib/*.js",
     "lib/**/*.js"
   ],
+  "publishConfig": {
+    "registry": "https://nexus.qa.sphereon.com/repository/sphereon-opensource-npm/"
+  },
   "dependencies": {
-    "base64url": "^3.0.1",
     "crypto-ld": "^3.7.0",
     "jsonld": "^2.0.2",
     "node-forge": "^0.9.1",
-    "security-context": "^4.0.0",
-    "serialize-error": "^5.0.0"
+    "react-native-security-context": "0.0.1",
+    "sodium-javascript": "^0.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
@@ -104,5 +106,15 @@
   "browser": {
     "crypto": false,
     "base64url": false
-  }
+  },
+  "resolutions": {
+    "sodium-native": "./node_modules/sodium-javascript"
+  },
+  "bundledDependencies": [
+    "crypto-ld",
+    "jsonld",
+    "node-forge",
+    "react-native-security-context",
+    "sodium-javascript"
+  ]
 }
