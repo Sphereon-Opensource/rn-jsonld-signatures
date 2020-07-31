@@ -64,13 +64,10 @@ Install with npm:
 npm install jsonld-signatures
 ```
 
-In Node.js, include the library like this:
+In React Native, include the library like this:
 ```js
-const jsigs = require('jsonld-signatures');
+import * as jsigs from 'react-native-jsonld-signatures';
 ```
-
-In a browser environment, include `jsonld`, `forge`, and
-`dist/jsonld-signatures.min.js` via script tag or other mechanism.
 
 Examples
 --------
@@ -122,8 +119,8 @@ const doc = {
 // sign the document as a simple assertion
 const {RsaSignature2018} = jsigs.suites;
 const {AssertionProofPurpose} = jsigs.purposes;
-const {RSAKeyPair} = require('crypto-ld');
-const {documentLoaders} = require('jsonld');
+const {RSAKeyPair} = jsigs;
+import {documentLoaders} from 'jsonld';
 
 const key = new RSAKeyPair({...publicKey, privateKeyPem});
 const signed = await jsigs.sign(doc, {
@@ -184,8 +181,8 @@ const doc = {
 // sign the document for the purpose of authentication
 const {Ed25519Signature2018} = jsigs.suites;
 const {AuthenticationProofPurpose} = jsigs.purposes;
-const {Ed25519KeyPair} = require('crypto-ld');
-const {documentLoaders} = require('jsonld');
+const {Ed25519KeyPair} = jsigs;
+import {documentLoaders} from 'jsonld';
 
 const signed = await jsigs.sign(doc, {
   suite: new Ed25519Signature2018({
@@ -221,27 +218,23 @@ if(result.verified) {
 }
 ```
 
-Node.js Native Canonize Bindings
---------------------------------
-
-Specialized use cases may wish to use the native canonize bindings. This mode
-can be enabled by setting the `useNativeCanonize` option to `true`. See the
-[jsonld.js notes](https://github.com/digitalbazaar/jsonld.js#nodejs-native-canonize-bindings)
-on this feature and note you should benchmark performance before using it.
-
 Commercial Support
 ------------------
 
-Commercial support for this library is available upon request from
+Commercial support for the node version of this library is available upon request from
 Digital Bazaar: support@digitalbazaar.com
 
 Source
 ------
 
-The source code for the JavaScript implementation of the JSON-LD Signatures API
+The source code for the Node implementation of the JSON-LD Signatures API
 is available at:
 
 https://github.com/digitalbazaar/jsonld-signatures
+
+The source code for the React Native implementation of the JSON-LD Signatures API available at:
+
+https://github.com/Sphereon-Opensource/react-native-jsonld-signatures
 
 Tests
 -----
@@ -250,25 +243,17 @@ This library includes a sample testing utility which may be used to verify
 that changes to the processor maintain the correct output.
 
 To run the sample tests you will need to get the test suite files by cloning
-the [jsonld-signatures repository][jsonld-signatures] hosted on GitHub.
+the [react-native-jsonld-signatures repository][react-native-jsonld-signatures] hosted on GitHub.
 
-https://github.com/digitalbazaar/jsonld-signatures/
+https://github.com/Sphereon-Opensource/react-native-jsonld-signatures
 
 Run the Node.js tests using the following command:
 
     npm run test
 
-Run browser tests using ChromeHeadless using the following command:
-
-    npm run test-karma
-
-Run browser tests using a selection of browsers using the following command:
-
-    npm run test-karma -- --browsers Firefox,Chrome,ChromeHeadless
-
 Code coverage of node tests can be generated in `coverage/`:
 
     npm run coverage
 
-[jsonld-signatures]: https://github.com/digitalbazaar/jsonld-signatures/
+[react-native-jsonld-signatures]: https://github.com/Sphereon-Opensource/react-native-jsonld-signatures
 [key-example]: https://github.com/digitalbazaar/jsonld-signatures/blob/44f1f67db2cfb0b166b7d5f63c40e10cc4642416/tests/test.js#L73
