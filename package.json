@@ -4,9 +4,9 @@
   "description": "An implementation of the Linked Data Signatures specifications for JSON-LD in JavaScript.",
   "homepage": "https://github.com/Sphereon-Opensource/react-native-jsonld-signatures",
   "author": {
-    "name": "Digital Bazaar, Inc.",
-    "email": "support@digitalbazaar.com",
-    "url": "https://digitalbazaar.com/"
+    "name": "Reacte native port by Sphereon, forked from Digital Bazaar, Inc.",
+    "email": "support@sphereon.com",
+    "url": "https://sphereon.com, https://digitalbazaar.com/"
   },
   "contributors": [
     "Dave Longley <dlongley@digitalbazaar.com>",
@@ -30,9 +30,7 @@
     "lib/*.js",
     "lib/**/*.js"
   ],
-  "publishConfig": {
-    "registry": "https://nexus.qa.sphereon.com/repository/sphereon-opensource-npm/"
-  },
+  "private": false,
   "dependencies": {
     "crypto-ld": "^3.7.0",
     "jsonld": "^2.0.2",
@@ -114,7 +112,7 @@
     "crypto-ld",
     "jsonld",
     "node-forge",
-    "react-native-security-context",
+    "@sphereon/w3c-security-contexts",
     "sodium-javascript"
   ]
 }
