@@ -1,4 +1,4 @@
-react-native-jsonld-signatures
+rn-jsonld-signatures
 =================
 
 An implementation of the Linked Data Signatures specification for JSON-LD.
@@ -59,12 +59,12 @@ security, or business rules.
 Install with npm:
 
 ```
-npm install jsonld-signatures
+npm install @sphereon/rn-jsonld-signatures
 ```
 
 In React Native, include the library like this:
 ```js
-import * as jsigs from 'react-native-jsonld-signatures';
+import * as jsigs from '@sphereon/rn-jsonld-signatures';
 ```
 
 Examples
@@ -232,7 +232,7 @@ https://github.com/digitalbazaar/jsonld-signatures
 
 The source code for the React Native implementation of the JSON-LD Signatures API available at:
 
-https://github.com/Sphereon-Opensource/react-native-jsonld-signatures
+https://github.com/Sphereon-Opensource/rn-jsonld-signatures
 
 Tests
 -----
@@ -241,9 +241,9 @@ This library includes a sample testing utility which may be used to verify
 that changes to the processor maintain the correct output.
 
 To run the sample tests you will need to get the test suite files by cloning
-the [react-native-jsonld-signatures repository][react-native-jsonld-signatures] hosted on GitHub.
+the [rn-jsonld-signatures repository][rn-jsonld-signatures] hosted on GitHub.
 
-https://github.com/Sphereon-Opensource/react-native-jsonld-signatures
+https://github.com/Sphereon-Opensource/rn-jsonld-signatures
 
 Run the Node.js tests using the following command:
 
@@ -253,5 +253,5 @@ Code coverage of node tests can be generated in `coverage/`:
 
     npm run coverage
 
-[react-native-jsonld-signatures]: https://github.com/Sphereon-Opensource/react-native-jsonld-signatures
+[react-native-jsonld-signatures]: https://github.com/Sphereon-Opensource/rn-jsonld-signatures
 [key-example]: https://github.com/digitalbazaar/jsonld-signatures/blob/44f1f67db2cfb0b166b7d5f63c40e10cc4642416/tests/test.js#L73

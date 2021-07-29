@@ -1,5 +1,5 @@
 {
-  "name": "react-native-jsonld-signatures",
+  "name": "@sphereon/rn-jsonld-signatures",
   "version": "5.1.1-0",
   "description": "An implementation of the Linked Data Signatures specifications for JSON-LD in JavaScript.",
   "homepage": "https://github.com/Sphereon-Opensource/react-native-jsonld-signatures",
@@ -37,7 +37,7 @@
     "crypto-ld": "^3.7.0",
     "jsonld": "^2.0.2",
     "node-forge": "^0.9.1",
-    "react-native-security-context": "0.0.1",
+    "@sphereon/w3c-security-contexts": "0.2.0",
     "sodium-javascript": "^0.6.1"
   },
   "devDependencies": {
