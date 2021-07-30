@@ -1,6 +1,6 @@
 {
   "name": "@sphereon/rn-jsonld-signatures",
-  "version": "5.1.1-0",
+  "version": "9.3.1-0",
   "description": "An implementation of the Linked Data Signatures specifications for JSON-LD in JavaScript.",
   "homepage": "https://github.com/Sphereon-Opensource/react-native-jsonld-signatures",
   "author": {
@@ -11,7 +11,8 @@
   "contributors": [
     "Dave Longley <dlongley@digitalbazaar.com>",
     "Manu Sporny <msporny@digitalbazaar.com>",
-    "David I. Lehn <dlehn@digitalbazaar.com>"
+    "David I. Lehn <dlehn@digitalbazaar.com>",
+    "Dmitri Zagidulin <dmitriz@digitalbazaar.com>"
   ],
   "repository": {
     "type": "git",
@@ -24,57 +25,38 @@
   "license": "BSD-3-Clause",
   "main": "lib/jsonld-signatures.js",
   "files": [
-    "browser/*.js",
-    "dist/*.js",
-    "dist/*.js.map",
     "lib/*.js",
     "lib/**/*.js"
   ],
   "private": false,
   "dependencies": {
     "crypto-ld": "^3.7.0",
-    "jsonld": "^2.0.2",
+    "jsonld": "^5.0.0",
     "node-forge": "^0.9.1",
     "@sphereon/w3c-security-contexts": "0.2.0",
-    "sodium-javascript": "^0.6.1"
+    "sodium-javascript": "^0.6.1",
+	"serialize-error": "^8.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
-    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
-    "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.6.3",
-    "@babel/runtime": "^7.6.3",
-    "babel-loader": "^8.0.6",
-    "browserify": "^16.5.0",
-    "chai": "^4.1.2",
-    "core-js": "^2.6.9",
-    "cross-env": "^6.0.3",
-    "eslint": "^6.7.2",
-    "eslint-config-digitalbazaar": "^2.0.1",
-    "esmify": "^2.1.1",
-    "karma": "^4.3.0",
-    "karma-babel-preprocessor": "^8.0.1",
-    "karma-browserify": "^6.1.0",
+    "chai": "^4.3.3",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.21.0",
+    "eslint-config-digitalbazaar": "^2.6.1",
+    "eslint-plugin-jsdoc": "^32.2.0",
+    "karma": "^6.1.1",
+    "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^3.1.0",
-    "karma-edge-launcher": "^0.4.2",
-    "karma-firefox-launcher": "^1.2.0",
-    "karma-ie-launcher": "^1.0.0",
-    "karma-mocha": "^1.3.0",
+    "karma-mocha": "^2.0.1",
     "karma-mocha-reporter": "^2.2.5",
-    "karma-safari-launcher": "^1.0.0",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-tap-reporter": "0.0.6",
-    "karma-webpack": "^4.0.2",
-    "mocha": "^6.2.1",
+    "karma-sourcemap-loader": "^0.3.8",
+    "karma-webpack": "^5.0.0",
+    "mocha": "^8.3.1",
     "mocha-lcov-reporter": "^1.3.0",
-    "nyc": "^14.1.1",
-    "webpack": "^4.41.1",
-    "webpack-cli": "^3.3.9",
-    "webpack-merge": "^4.2.2"
+    "nyc": "^15.1.0",
+    "webpack": "^5.24.3"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
   },
   "keywords": [
     "JSON",
@@ -86,24 +68,22 @@
     "digital signatures"
   ],
   "scripts": {
-    "prepublish": "npm run build",
-    "build": "npm run build-webpack",
-    "build-webpack": "webpack",
-    "test": "npm run test-node",
-    "test-node": "cross-env NODE_ENV=test mocha --delay -t 30000 -A -R ${REPORTER:-spec} tests/test.js",
-    "test-karma": "karma start",
+    "test": "npm run lint && npm run test-node && npm run test-karma",
+    "test-node": "cross-env NODE_ENV=test mocha --preserve-symlinks -t 10000 test/*.spec.js",
+    "test-karma": "karma start karma.conf.js",
     "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-summary npm run test-node",
+    "coverage-ci": "cross-env NODE_ENV=test nyc --reporter=lcovonly npm run test-node",
     "coverage-report": "nyc report",
-    "lint": "eslint '*.js' 'lib/*.js' 'lib/**/*.js' 'tests/*.js' 'tests/**/*.js'"
+    "lint": "eslint ."
   },
   "nyc": {
     "exclude": [
-      "tests"
+      "test"
     ]
   },
   "browser": {
     "crypto": false,
-    "base64url": false
+    "./lib/sha256digest.js": "./lib/sha256digest-browser.js"
   },
   "resolutions": {
     "sodium-native": "./node_modules/sodium-javascript"

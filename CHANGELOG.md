@@ -1,5 +1,133 @@
 # jsonld-signatures ChangeLog
 
+## 9.3.0 - 2021-07-10
+
+### Added
+- Add optimization for JSON-LD controller documents that are DID documents. When
+  a controller ID resolves to a JSON-LD DID Document, then JSON-LD framing can
+  be skipped when verifying verification method relationships if the verification
+  relationship is one that is defined by the DID context.
+
+## 9.2.1 - 2021-07-08
+
+### Fixed
+- Use the `size` method to get the number of entries in the `purposeToProofs` Map.
+
+## 9.2.0 - 2021-07-02
+
+### Added
+- Support passing multiple purposes in a single verify call.
+- Add `NotFoundError` name to error thrown when there are not enough proofs
+  to match the passed supported suites and purposes during verification.
+  LD suite implementations should not be relying the error message but can
+  rely on the `name` property of the error instead.
+
+### Changed
+- `LinkedDataSignature` no longer calls `purpose.validate`; this function
+  is instead called after `verifyProof()`. This removes the responsibility
+  of calling this function from LD suite implementations and places it in
+  the main verify call from within jsigs instead. LD suites will still be
+  passed a dummy `purpose` in this version for backwards compatibility
+  purposes that will successfully return a promise that resolves to
+  `true` from `purpose.validate()`. Decoupling this from the suites both
+  establishes a better separation of concerns and simplifies LD suites by
+  reducing their responsibilities. LD suites are responsible for returing
+  the `verificationMethod` used in their results so it can be passed to
+  `purpose.validate()`.
+- Add cache for hash of canonicalized document to enable its reuse when
+  verifying multiple proofs on a single document.
+
+## 9.1.1 - 2021-06-29
+
+### Fixed
+- Use `Map` to internally represent contexts instead of an object. This
+  optimizes better w/ v8.
+
+## 9.1.0 - 2021-06-29
+
+### Changed
+- Use `tag: 'static'` feature in `extendContextLoader`. This flag will inform
+  the JSON-LD processor that the statically loaded contexts are, in fact,
+  static and only need to be processed once.
+
+## 9.0.2 - 2021-04-12
+
+### Changed
+- Move ensuring suite context to suite subclass. (Non-breaking change, added
+  to support the 2018 signature suite.)
+
+## 9.0.1 - 2021-04-09
+
+These changes were intended to be released in v9.0.0, so, releasing them as
+a patch.
+
+### Changed
+- **BREAKING**: Implement automatic adding of the suite context to the document
+  to be signed, (if it's not present already).
+- **BREAKING**: Remove the case where the `document` argument in `sign()` or
+  `verify()` is a URL (instead of an object), since this is an unused feature,
+  and a mixing of layers.
+
+## 9.0.0 - 2021-04-06
+
+### Changed
+- **BREAKING**: Remove `verificationMethod` param from suite constructor. It
+  is now strictly initialized from `key.id` or `signer.id`.
+  Increase validation on either key or signer/verifier parameters.
+
+### Fixed
+- Add missing `signer` and `verifier` parameters to the `LinkedDataSignature`
+  constructor. This issue caused `this.signer` in subclasses to be `undefined`.
+
+## 8.0.2 - 2021-03-19
+
+### Changed
+- In ProofSet, use the document's context for proof before defaulting to
+  security context.
+
+## 8.0.1 - 2021-03-18
+
+### Changed
+- Update karma setup, remove babel.
+
+## 8.0.0 - 2021-03-18
+
+### Changed
+- **BREAKING**: Only support Node.js >=12.
+- **BREAKING**: Drop support for deprecated `owner` proof property.
+- **BREAKING**: Drop support for deprecated `creator` proof property.
+
+### Removed
+- **BREAKING**: No longer shipping browser bundles. Due to splitting out suites
+  into other packages, it becomes more practical to create browser bundles at
+  the application level with modern tools.
+- **BREAKING**: No longer exporting `crypto-ld` classes.
+- **BREAKING**: Remove `PublicKeyProofPurpose`.
+- **BREAKING**: Remove `GraphSignature2012` suite.
+- **BREAKING**: Remove `LinkedDataSignature2015` suite.
+- **BREAKING**: Remove bundled signature suites; all moved to external repos:
+  - `JwsLinkedDataSignature` suite moved to https://github.com/digitalbazaar/jws-linked-data-signature
+  - `RsaSignature2018` suite moved to https://github.com/digitalbazaar/rsa-signature-2018
+  - `Ed25519Signature2018` suite moved to https://github.com/digitalbazaar/ed25519-signature-2018
+- **BREAKING**: Remove `compactProof` parameter when signing and verifying. This
+  means that going forward, documents are required to use the appropriate
+  contexts for the proof that they're using (error will be thrown otherwise).
+
+## 7.0.0 - 2021-02-11
+
+### Changed
+- **BREAKING**: Update to `jsonld@4.0.1` dep (uses JSON-LD 1.1).
+
+## 6.0.0 - 2020-09-30
+
+### Changed
+- **BREAKING**: Drop support for Node.js v8.
+
+## 5.2.0 - 2020-09-30
+
+### Changed
+- Use node-forge@0.10.0.
+
 ## 5.1.0 - 2020-05-05
 
 ### Changed
