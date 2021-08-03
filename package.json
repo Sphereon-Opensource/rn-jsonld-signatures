@@ -1,10 +1,10 @@
 {
   "name": "@sphereon/rn-jsonld-signatures",
   "version": "9.3.1-0",
-  "description": "An implementation of the Linked Data Signatures specifications for JSON-LD in JavaScript.",
-  "homepage": "https://github.com/Sphereon-Opensource/react-native-jsonld-signatures",
+  "description": "An implementation of the Linked Data Signatures specifications for JSON-LD in Typescript supporting React Native.",
+  "homepage": "https://github.com/Sphereon-Opensource/rn-jsonld-signatures",
   "author": {
-    "name": "Reacte native port by Sphereon, forked from Digital Bazaar, Inc.",
+    "name": "React native port by Sphereon, forked from Digital Bazaar, Inc.",
     "email": "support@sphereon.com",
     "url": "https://sphereon.com, https://digitalbazaar.com/"
   },
@@ -12,14 +12,15 @@
     "Dave Longley <dlongley@digitalbazaar.com>",
     "Manu Sporny <msporny@digitalbazaar.com>",
     "David I. Lehn <dlehn@digitalbazaar.com>",
-    "Dmitri Zagidulin <dmitriz@digitalbazaar.com>"
+    "Dmitri Zagidulin <dmitriz@digitalbazaar.com>",
+    "Sphereon <dev@sphereon.com>"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Sphereon-Opensource/react-native-jsonld-signatures"
+    "url": "https://github.com/Sphereon-Opensource/rn-jsonld-signatures"
   },
   "bugs": {
-    "url": "https://github.com/Sphereon-Opensource/react-native-jsonld-signatures/issues",
+    "url": "https://github.com/Sphereon-Opensource/rn-jsonld-signatures/issues",
     "email": "support@digitalbazaar.com"
   },
   "license": "BSD-3-Clause",
@@ -35,7 +36,7 @@
     "node-forge": "^0.9.1",
     "@sphereon/w3c-security-contexts": "0.2.0",
     "sodium-javascript": "^0.6.1",
-	"serialize-error": "^8.0.1"
+    "serialize-error": "^8.0.1"
   },
   "devDependencies": {
     "chai": "^4.3.3",
@@ -92,7 +93,6 @@
     "crypto-ld",
     "jsonld",
     "node-forge",
-    "@sphereon/w3c-security-contexts",
     "sodium-javascript"
   ]
 }
