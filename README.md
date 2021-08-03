@@ -63,8 +63,8 @@ document.
 One common use case for creating these signatures is for use with 
 [Verifiable Credentials](https://w3c.github.io/vc-data-model) (VCs). If you're 
 working with those, you should use a higher-level library that's specifically
-made for that purpose, such as [`vc-js`](https://github.com/digitalbazaar/vc-js).
-(Incidentally, `vc-js` uses this library, `jsonld-signatures`, under the hood.)
+made for that purpose, such as [`rn-vc-js`](https://github.com/Sphereon-OpenSource/rn-vc-js).
+(Incidentally, `rn-vc-js` uses this library, `rn-jsonld-signatures`, under the hood.)
 
 ## Security
 
@@ -113,7 +113,7 @@ import * as jsigs from '@sphereon/rn-jsonld-signatures';
 
 ## Usage
 
-`jsonld-signatures` (version `8.x` and above) is not meant for standalone use.
+`rn-jsonld-signatures` (version `8.x` and above) is not meant for standalone use.
 Instead, it's generally used through an individual _crypto suite_.
 For detailed usage instructions, see the READMEs of the supported suites:
 
@@ -275,6 +275,10 @@ If editing the Readme, please conform to the
 
 ## Commercial Support
 
+Commercial support for the React Native version of this library is available upon request from
+Sphereon: support@sphereon.com
+
+
 Commercial support for the node version of this library is available upon request from
 Digital Bazaar: support@digitalbazaar.com
 
@@ -283,15 +287,15 @@ Digital Bazaar: support@digitalbazaar.com
 [New BSD License (3-clause)](LICENSE) © Digital Bazaar
 
 ## Source
+The source code for the React Native implementation of the JSON-LD Signatures API available at:
+
+https://github.com/Sphereon-Opensource/rn-jsonld-signatures
+
 
 The source code for the Node and Browser implementation of the JSON-LD Signatures API
 is available at:
 
 https://github.com/digitalbazaar/jsonld-signatures
-
-The source code for the React Native implementation of the JSON-LD Signatures API available at:
-
-https://github.com/Sphereon-Opensource/rn-jsonld-signatures
 
 ## Tests
 
@@ -311,6 +315,6 @@ Code coverage of node tests can be generated in `coverage/`:
 
     npm run coverage
 
-[react-native-jsonld-signatures]: https://github.com/Sphereon-Opensource/rn-jsonld-signatures
+[rn-jsonld-signatures]: https://github.com/Sphereon-Opensource/rn-jsonld-signatures
 [key-example]: https://github.com/digitalbazaar/jsonld-signatures/blob/44f1f67db2cfb0b166b7d5f63c40e10cc4642416/tests/test.js#L73
 
